@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<EmBlocks_project_file>
+	<EmBlocksVersion release="1.43" revision="4" />
+	<FileVersion major="1" minor="0" />
+	<Project>
+		<Option title="STM32RBue" />
+		<Option pch_mode="2" />
+		<Option compiler="armgcc_eb" />
+		<Build>
+			<Target title="STM32RBue">
+				<Option output=".\STM32RBue.elf" />
+				<Option type="0" />
+				<Option create_hex="1" />
+				<Option compiler="armgcc" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectAssemblerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectIncludeDirsRelation="1" />
+				<Option projectLibDirsRelation="1" />
+				<Device>
+					<Add option="$device=cortex-m4" />
+					<Add option="$lscript=.\STM32RBueRam.ld" />
+				</Device>
+				<Compiler>
+					<Add option="-mthumb" />
+					<Add option="-Wall" />
+					<Add option="-ffunction-sections" />
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-DSTM32F407VG" />
+					<Add option="-DSTM32F4XX" />
+					<Add option="-DUSE_STDPERIPH_DRIVER" />
+					<Add option="-DVECT_TAB_SRAM" />
+					<Add directory="." />
+					<Add directory="cmsis" />
+					<Add directory="cmsis_boot" />
+					<Add directory="cmsis_lib\include" />
+				</Compiler>
+				<Assembler>
+					<Add option="-Wa,-mthumb" />
+				</Assembler>
+				<Linker>
+					<Add option="-nostartfiles" />
+					<Add option="-Wl,--gc-sections" />
+				</Linker>
+			</Target>
+			<Target title="STM32RBueRelease">
+				<Option output=".\STM32RBue.elf" />
+				<Option type="0" />
+				<Option create_hex="1" />
+				<Option compiler="armgcc" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectAssemblerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectIncludeDirsRelation="1" />
+				<Option projectLibDirsRelation="1" />
+				<Device>
+					<Add option="$device=cortex-m4" />
+					<Add option="$lscript=.\STM32RBue.ld" />
+				</Device>
+				<Compiler>
+					<Add option="-mthumb" />
+					<Add option="-Wall" />
+					<Add option="-ffunction-sections" />
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-DSTM32F407VG" />
+					<Add option="-DSTM32F4XX" />
+					<Add option="-DUSE_STDPERIPH_DRIVER" />
+					<Add directory="." />
+					<Add directory="cmsis" />
+					<Add directory="cmsis_boot" />
+					<Add directory="cmsis_lib\include" />
+				</Compiler>
+				<Assembler>
+					<Add option="-Wa,-mthumb" />
+				</Assembler>
+				<Linker>
+					<Add option="-nostartfiles" />
+					<Add option="-Wl,--gc-sections" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add directory="cmsis" />
+			<Add directory="cmsis_boot" />
+		</Compiler>
+		<Unit filename="LED.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="LED.h" />
+		<Unit filename="cmsis\core_cm4.h" />
+		<Unit filename="cmsis\core_cm4_simd.h" />
+		<Unit filename="cmsis\core_cmFunc.h" />
+		<Unit filename="cmsis\core_cmInstr.h" />
+		<Unit filename="cmsis_boot\startup\startup_stm32f4xx.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="cmsis_boot\stm32f4xx.h" />
+		<Unit filename="cmsis_boot\stm32f4xx_conf.h" />
+		<Unit filename="cmsis_boot\system_stm32f4xx.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="cmsis_boot\system_stm32f4xx.h" />
+		<Unit filename="irda.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="irda.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger>
+				<target_debugging_settings target="STM32RBue" active_interface="ST-link">
+					<debug_interface interface_id="ST-link" ip_address="localhost" ip_port="4242" path="${EMBLOCKS}\share\contrib" executable="STLinkGDB.exe" description="" dont_start_server="false" backoff_time="1000" options="0" active_family="STMicroelectronics">
+						<family_options family_id="STMicroelectronics">
+							<option opt_id="ID_JTAG_SWD" opt_value="swd" />
+							<option opt_id="ID_VECTOR_START" opt_value="0x20000000" />
+							<option opt_id="ID_RESET_TYPE" opt_value="System" />
+							<option opt_id="ID_LOAD_PROGRAM" opt_value="1" />
+							<option opt_id="ID_SEMIHOST_CHECK" opt_value="1" />
+							<option opt_id="ID_RAM_EXEC" opt_value="1" />
+							<option opt_id="ID_VEC_TABLE" opt_value="1" />
+							<option opt_id="ID_VERBOSE_LEVEL" opt_value="3" />
+						</family_options>
+					</debug_interface>
+				</target_debugging_settings>
+				<target_debugging_settings target="STM32RBueRelease" active_interface="ST-link">
+					<debug_interface interface_id="ST-link" ip_address="localhost" ip_port="4242" path="${EMBLOCKS}\share\contrib" executable="STLinkGDB.exe" description="" dont_start_server="false" backoff_time="1000" options="0" active_family="STMicroelectronics">
+						<family_options family_id="STMicroelectronics">
+							<option opt_id="ID_JTAG_SWD" opt_value="swd" />
+							<option opt_id="ID_RESET_TYPE" opt_value="System" />
+							<option opt_id="ID_VECTOR_START" opt_value="0x08000000" />
+							<option opt_id="ID_LOAD_PROGRAM" opt_value="1" />
+							<option opt_id="ID_RAM_EXEC" opt_value="0" />
+							<option opt_id="ID_VEC_TABLE" opt_value="1" />
+							<option opt_id="ID_VERBOSE_LEVEL" opt_value="3" />
+						</family_options>
+					</debug_interface>
+				</target_debugging_settings>
+			</debugger>
+			<envvars />
+		</Extensions>
+	</Project>
+</EmBlocks_project_file>
